@@ -128,3 +128,40 @@ L13:
     ssh bandit12@bandit.labs.overthewire.org -p 2220
     password: 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
     prompt:
+        ls
+        head -4 data.txt                    # Shows data as hext dump (0b in 0x format)
+        file data.txt
+        tmp_dir=$(mktemp -d)                # Create a temporary directory with a random name
+        echo $tmp_dir
+        cp data.txt $tmp_dir                # Copy the data.txt file into the temporary directory
+        cd $tmp_dir
+        mv data.txt data                    # Rename the file inside the temp directory
+        xxd -r -p data > binary             # Use xxd to convert data to binary equivlent
+        file binary                         # Verify file data
+        cp binary binary.gz                 # Copy/convert to gzip file
+        gunzip binary.gz                    # Will override binary
+        bunzip2 binary                      # Compressed using bzip2
+        file binary.out
+                                            # File Recurively compressed using `tar`, `gzip`, and `bzip2`
+        mv binary.out binary.gz
+        gunzip binary.gz
+        file binary
+        tar -xf binary
+        rm binary data
+        file data5.bin
+        tar -xf data5.bin
+        rm data5.bin
+        file data6.bin
+        bunzip2 data6.bin
+        file data6.bin.out
+        tar -xf data6.bin.out
+        rm data6.bin.out
+        file data8.bin
+        mv data8.bin data8.gz
+        gunzip data8.gz
+        file data8                  # Finally a ASCII text from recurive description
+        cat data8
+    answer: FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
+L14:
+    ssh bandit13@bandit.labs.overthewire.org -p 2220
+    password: FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
