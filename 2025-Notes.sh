@@ -127,3 +127,4 @@ L12:
 L13:
     ssh bandit12@bandit.labs.overthewire.org -p 2220
     password: 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+    prompt:
